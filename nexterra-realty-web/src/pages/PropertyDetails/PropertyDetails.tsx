@@ -23,7 +23,7 @@ export default function PropertyDetails() {
   const [property, setProperty] = useState<Property | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5240/api/properties/${id}`)
+    fetch(`https://nexterra-realty.onrender.com/api/properties/${id}`)
       .then((res) => res.json())
       .then((data) => setProperty(data))
       .catch((err) => console.error(err));

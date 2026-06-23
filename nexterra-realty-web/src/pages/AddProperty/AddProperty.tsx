@@ -74,7 +74,7 @@ const property = {
 
 
     const response = await fetch(
-      "http://localhost:5240/api/properties",
+      "https://nexterra-realty.onrender.com/api/properties",
       {
         method: "POST",
         headers: {
