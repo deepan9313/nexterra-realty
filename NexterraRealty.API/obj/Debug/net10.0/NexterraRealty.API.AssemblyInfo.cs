@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NexterraRealty.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b299738e05d96dca0a498337d2bdf8b35d6b685d")]
 [assembly: System.Reflection.AssemblyProductAttribute("NexterraRealty.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NexterraRealty.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

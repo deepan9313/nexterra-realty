@@ -13,7 +13,7 @@ export default function MapSearch() {
   const [nearbyProperties, setNearbyProperties] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:5240/api/properties")
+    fetch("https://nexterra-realty.onrender.com/api/properties")
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));
@@ -74,11 +74,15 @@ export default function MapSearch() {
         Search Properties on Map
       </h1>
 
-      <LoadScript
-        googleMapsApiKey={
-          import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-        }
-      >
+     <h1 className="text-red-500">
+      {import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+    </h1>
+
+    <LoadScript
+      googleMapsApiKey={
+        import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+      }
+    >
         <GoogleMap
           mapContainerStyle={{
             width: "100%",

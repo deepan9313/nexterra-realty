@@ -120,3 +120,4 @@ D:\NexterraRealty\NexterraRealty.API\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis
 D:\NexterraRealty\NexterraRealty.API\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\NexterraRealty\NexterraRealty.API\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\NexterraRealty\NexterraRealty.API\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\NexterraRealty\NexterraRealty.API\obj\Debug\net10.0\NexterraRealty.API.sourcelink.json

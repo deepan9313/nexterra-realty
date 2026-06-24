@@ -1,5 +1,8 @@
-
 import { useEffect, useState } from "react";
+
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://nexterra-realty.onrender.com";
 
 interface Property {
   id: number;
@@ -8,61 +11,57 @@ interface Property {
   status: string;
 }
 
-
-
 export default function Dashboard() {
+  const [properties, setProperties] = useState<Property[]>([]);
 
- const [properties, setProperties] = useState<Property[]>([]);
+  const [stats, setStats] = useState({
+    total: 0,
+    pending: 0,
+    approved: 0,
+    rejected: 0,
+  });
 
-const [stats, setStats] = useState({
-  total: 0,
-  pending: 0,
-  approved: 0,
-  rejected: 0,
-});
- useEffect(() => {
-  fetch("http://localhost:5240/api/properties")
-    .then((res) => res.json())
-    .then((data) => setProperties(data));
+  useEffect(() => {
+    fetch(`${API_URL}/api/properties`)
+      .then((res) => res.json())
+      .then((data) => setProperties(data))
+      .catch((err) => console.error(err));
 
-  fetch("http://localhost:5240/api/properties/stats")
-    .then((res) => res.json())
-    .then((data) => setStats(data));
-}, []);
-  
-const approveProperty = async (id: number) => {
-  await fetch(
-    `http://localhost:5240/api/properties/approve/${id}`,
-    {
+    fetch(`${API_URL}/api/properties/stats`)
+      .then((res) => res.json())
+      .then((data) => setStats(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const approveProperty = async (id: number) => {
+    await fetch(`${API_URL}/api/properties/approve/${id}`, {
       method: "PUT",
-    }
-  );
+    });
 
-  setProperties((prev) =>
-    prev.map((property) =>
-      property.id === id
-        ? { ...property, status: "Approved" }
-        : property
-    )
-  );
-};
+    setProperties((prev) =>
+      prev.map((property) =>
+        property.id === id
+          ? { ...property, status: "Approved" }
+          : property
+      )
+    );
+  };
 
-const rejectProperty = async (id: number) => {
-  await fetch(
-    `http://localhost:5240/api/properties/reject/${id}`,
-    {
+  const rejectProperty = async (id: number) => {
+    await fetch(`${API_URL}/api/properties/reject/${id}`, {
       method: "PUT",
-    }
-  );
+    });
 
-  setProperties((prev) =>
-    prev.map((property) =>
-      property.id === id
-        ? { ...property, status: "Rejected" }
-        : property
-    )
-  );
-};
+    setProperties((prev) =>
+      prev.map((property) =>
+        property.id === id
+          ? { ...property, status: "Rejected" }
+          : property
+      )
+    );
+  };
+
+  // KEEP THE REST OF YOUR EXISTING JSX BELOW THIS LINE
 
 
 
