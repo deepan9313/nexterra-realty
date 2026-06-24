@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import GoogleMapComponent from "../../components/GoogleMapComponent";
 
 const API_URL = "https://nexterra-realty.onrender.com";
 
@@ -29,6 +30,10 @@ export default function ListProperty() {
   };
 
   const handleSubmit = async () => {
+   if (!formData.latitude || !formData.longitude) {
+  alert("Please select property location on map");
+  return;
+}
     const property = {
       title: formData.title,
       description: formData.description,
@@ -165,21 +170,7 @@ export default function ListProperty() {
               className="border p-3 rounded-xl"
             />
 
-            <input
-              name="latitude"
-              value={formData.latitude}
-              onChange={handleChange}
-              placeholder="Latitude"
-              className="border p-3 rounded-xl"
-            />
-
-            <input
-              name="longitude"
-              value={formData.longitude}
-              onChange={handleChange}
-              placeholder="Longitude"
-              className="border p-3 rounded-xl"
-            />
+            
           </div>
 
           <textarea
@@ -190,6 +181,38 @@ export default function ListProperty() {
             placeholder="Property Description"
             className="w-full border p-3 rounded-xl mt-6"
           />
+          {/* Property Location Map */}
+<div className="md:col-span-2 mt-4">
+  <h3 className="text-xl font-semibold mb-3">
+    Select Property Location on Map
+  </h3>
+
+  <GoogleMapComponent
+    onLocationSelect={(lat, lng) => {
+      setFormData((prev) => ({
+        ...prev,
+        latitude: lat.toString(),
+        longitude: lng.toString(),
+      }));
+    }}
+  />
+
+  <div className="grid md:grid-cols-2 gap-4 mt-4">
+    <input
+      value={formData.latitude}
+      readOnly
+      placeholder="Latitude"
+      className="border p-3 rounded-xl bg-gray-100"
+    />
+
+    <input
+      value={formData.longitude}
+      readOnly
+      placeholder="Longitude"
+      className="border p-3 rounded-xl bg-gray-100"
+    />
+  </div>
+</div>
 
           <button
             onClick={handleSubmit}
