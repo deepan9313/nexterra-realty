@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+
 interface Property {
   id: number;
   title: string;
@@ -14,6 +15,8 @@ interface Property {
   propertyType: string;
   status: string;
   imageUrl: string;
+  latitude: number;
+  longitude: number;
 }
 
 export default function Listings() {
@@ -30,7 +33,7 @@ export default function Listings() {
     Number(searchParams.get("budget")) || 0;
 
   useEffect(() => {
-    fetch("http://localhost:5240/api/properties")
+    fetch("https://nexterra-realty.onrender.com/api/properties")
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));
@@ -52,6 +55,9 @@ export default function Listings() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-10">
+        
+
+<div className="h-8"></div>
 
         <div className="grid lg:grid-cols-4 gap-8">
 
