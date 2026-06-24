@@ -74,9 +74,7 @@ export default function MapSearch() {
         Search Properties on Map
       </h1>
 
-     <h1 className="text-red-500">
-      {import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-    </h1>
+    
 
     <LoadScript
       googleMapsApiKey={
